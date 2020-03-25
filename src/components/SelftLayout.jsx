@@ -23,13 +23,12 @@ const headerList = [
 export default class SelfLayout extends React.Component {
   render() {
     return (
-      <Layout className='layout'>
+      <Layout className='layout' style={{ height: '100%' }}>
         <Header
           style={{
             position: 'fixed',
-            zIndex: 1,
             width: '100%',
-            overflow: 'hidden'
+            zIndex: 1
           }}>
           <div
             className='logo'
@@ -66,17 +65,27 @@ export default class SelfLayout extends React.Component {
         <Content
           className='site-layout'
           style={{ padding: '0 50px', marginTop: 64 }}>
-          <Router>
-            <div>
-              <Switch>
-                <Route path='/' exact component={Home} />
-                <Route path='/tech' component={Study} name='学无止境' />
-                <Route path='/life' component={Life} />
-                <Route path='/me' component={Me} />
-                <Redirect from='/*' to='/' />
-              </Switch>
-            </div>
-          </Router>
+          <div
+            className='site-layout-content'
+            style={{
+              background: '#fff',
+              padding: '24px',
+              minHeight: '280px',
+              height: '100%',
+              overflow: 'auto'
+            }}>
+            <Router>
+              <div>
+                <Switch>
+                  <Route path='/' exact component={Home} />
+                  <Route path='/tech' component={Study} name='学无止境' />
+                  <Route path='/life' component={Life} />
+                  <Route path='/me' component={Me} />
+                  <Redirect from='/*' to='/' />
+                </Switch>
+              </div>
+            </Router>
+          </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>浙ICP备20008750号</Footer>
       </Layout>
